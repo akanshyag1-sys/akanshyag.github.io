@@ -1,0 +1,366 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#060608;--bg2:#0c0c10;--bg3:#111118;--gold:#C9A84C;--gold2:#E8C97A;--cream:#F0EAD6;--cream2:#B8B09A;--cream3:#6B6458;--white:#FAFAF8;--line:#1e1e28;--line2:#2a2a38}
+body{background:var(--bg);color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
+
+.cursor{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width 0.3s,height 0.3s}
+
+nav{position:sticky;top:0;z-index:500;padding:0 2.5rem;height:56px;display:flex;justify-content:space-between;align-items:center;background:rgba(6,6,8,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);opacity:0;transition:opacity 0.5s}
+.nav-logo.show{opacity:1}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream3);cursor:none;transition:color 0.3s;text-decoration:none}
+.nav-links a:hover{color:var(--gold)}
+.nav-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero{display:grid;grid-template-columns:1fr 200px;gap:0;border-bottom:1px solid var(--line);min-height:0}
+.hero-left{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--line)}
+.hero-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;opacity:0;transform:translateY(16px);transition:opacity 0.8s,transform 0.8s}
+.hero-eyebrow:before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,10vw,110px);font-weight:300;line-height:0.92;letter-spacing:-0.02em;color:var(--white);opacity:0;transform:translateY(24px);transition:opacity 0.9s 0.15s,transform 0.9s 0.15s cubic-bezier(0.16,1,0.3,1)}
+.hero-name em{font-style:italic;color:var(--gold)}
+.hero-bottom{margin-top:2rem;display:flex;flex-direction:column;gap:1.25rem;opacity:0;transform:translateY(16px);transition:opacity 0.8s 0.4s,transform 0.8s 0.4s}
+.hero-desc{font-size:12px;color:var(--cream3);line-height:1.9;max-width:420px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-gold{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:10px 22px;background:var(--gold);color:var(--bg);border:none;cursor:none;transition:background 0.3s}
+.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:10px 22px;background:transparent;color:var(--cream3);border:1px solid var(--line2);cursor:none;transition:color 0.3s,border-color 0.3s}
+.btn-ghost:hover{color:var(--white);border-color:var(--cream3)}
+.hero-pills{display:flex;gap:6px;flex-wrap:wrap}
+.hpill{font-size:10px;letter-spacing:0.08em;padding:5px 12px;border:1px solid var(--line2);color:var(--cream3)}
+.hero-right{display:flex;flex-direction:column;opacity:0;transition:opacity 0.9s 0.5s}
+.portrait-box{flex:1;background:var(--bg3);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--line2);min-height:200px}
+.portrait-box i{font-size:32px}
+.portrait-box span{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream3)}
+.hero-scroll{padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-txt{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream3)}
+.scroll-track{width:1px;height:40px;background:var(--line2);position:relative;overflow:hidden}
+.scroll-track:after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:drip 2s infinite 0.8s}
+@keyframes drip{0%{top:-100%}100%{top:100%}}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.stat{padding:1.5rem 2.5rem;border-right:1px solid var(--line);position:relative;overflow:hidden;transition:background 0.4s}
+.stat:last-child{border-right:none}
+.stat:hover{background:var(--bg2)}
+.stat:before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.5s cubic-bezier(0.16,1,0.3,1)}
+.stat:hover:before{width:100%}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--white);line-height:1}
+.stat-n em{font-style:normal;color:var(--gold);font-size:26px}
+.stat-l{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream3);margin-top:6px}
+
+.sec{padding:4rem 2.5rem;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:3rem}
+.eyebrow:before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.headline{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,54px);font-weight:300;color:var(--white);line-height:1.05;letter-spacing:-0.01em;margin-bottom:2.5rem}
+.headline em{font-style:italic;color:var(--gold)}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-body{font-size:13px;color:var(--cream3);line-height:1.95;margin-bottom:1rem}
+.skills{display:flex;flex-direction:column;gap:14px}
+.skrow{display:flex;gap:8px;align-items:flex-start}
+.skcat{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream3);min-width:84px;padding-top:5px}
+.sktags{display:flex;gap:5px;flex-wrap:wrap}
+.sktag{font-size:11px;padding:4px 11px;border:1px solid var(--line2);color:var(--cream3);transition:all 0.3s;cursor:none}
+.sktag:hover{border-color:var(--gold);color:var(--gold)}
+
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.proj{background:var(--bg);padding:2rem;cursor:none;position:relative;overflow:hidden;transition:background 0.4s}
+.proj:hover{background:var(--bg2)}
+.proj-glow{position:absolute;top:-80px;right:-80px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,0.05),transparent 70%);opacity:0;transition:opacity 0.5s;pointer-events:none}
+.proj:hover .proj-glow{opacity:1}
+.proj-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.proj-num{font-size:10px;letter-spacing:0.18em;color:var(--cream3)}
+.proj-arrow{width:26px;height:26px;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--cream3);transition:all 0.3s;flex-shrink:0}
+.proj:hover .proj-arrow{border-color:var(--gold);color:var(--gold);transform:translate(2px,-2px)}
+.proj-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);margin-bottom:8px;line-height:1.3}
+.proj-desc{font-size:12px;color:var(--cream3);line-height:1.8;margin-bottom:1.5rem}
+.proj-mets{display:flex;gap:1.5rem;margin-bottom:1.25rem}
+.pmv{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold2)}
+.pmk{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--cream3);margin-top:2px}
+.proj-tags{display:flex;gap:5px;flex-wrap:wrap}
+.ptag{font-size:10px;letter-spacing:0.05em;padding:3px 9px;border:1px solid var(--line);color:var(--cream3)}
+.proj-bar{position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(to right,var(--gold),var(--gold2));transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+.proj:hover .proj-bar{width:100%}
+
+.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.rec{background:var(--bg);padding:2rem;position:relative;overflow:hidden;transition:background 0.4s}
+.rec:hover{background:var(--bg2)}
+.rec-mark{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--gold);line-height:0.6;margin-bottom:1.25rem;opacity:0.5}
+.rec-text{font-size:12px;color:var(--cream3);line-height:1.95;margin-bottom:1.5rem;font-style:italic}
+.rec-div{width:28px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:1.25rem}
+.rec-who{display:flex;align-items:center;gap:12px}
+.rec-init{width:36px;height:36px;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);flex-shrink:0}
+.rec-name{font-size:13px;color:var(--white)}
+.rec-role{font-size:11px;color:var(--cream3);margin-top:2px}
+.rec-email{font-size:11px;color:var(--gold);margin-top:2px;opacity:0.7}
+.rec-bar{position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+.rec:hover .rec-bar{width:100%}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-sub{font-size:13px;color:var(--cream3);line-height:1.9;margin-bottom:2rem}
+.clinks{display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.clink{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--bg);color:var(--cream3);text-decoration:none;font-size:12px;letter-spacing:0.05em;transition:all 0.3s;position:relative;overflow:hidden;cursor:none}
+.clink:hover{background:var(--bg2);color:var(--white)}
+.clink i{font-size:15px;color:var(--gold);flex-shrink:0}
+.clink-bar{position:absolute;left:0;top:0;width:2px;height:0;background:var(--gold);transition:height 0.35s}
+.clink:hover .clink-bar{height:100%}
+.cinfo-stack{display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.cinfo{padding:18px 20px;background:var(--bg)}
+.cinfo-l{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream3);margin-bottom:6px}
+.cinfo-v{font-size:13px;color:var(--white)}
+
+footer{padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
+footer p{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream3)}
+.fg{color:var(--gold)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);z-index:1000;align-items:center;justify-content:center;padding:2rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--line2);width:100%;max-width:520px;padding:2rem;max-height:88vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:var(--cream3);cursor:none;font-size:17px;transition:color 0.3s}
+.modal-close:hover{color:var(--gold)}
+.modal-ey{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;gap:6px;flex-wrap:wrap}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--white);margin-bottom:10px;line-height:1.3}
+.modal-desc{font-size:12px;color:var(--cream3);line-height:1.9;margin-bottom:1.5rem}
+.modal-mets{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-bottom:1.5rem}
+.mmet{background:var(--bg3);padding:14px}
+.mmet-v{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--gold2)}
+.mmet-k{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--cream3);margin-top:3px}
+.modal-sec{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream3);margin-bottom:10px}
+.modal-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.modal-list li{font-size:12px;color:var(--cream3);padding-left:16px;position:relative;line-height:1.7}
+.modal-list li:before{content:'—';position:absolute;left:0;color:var(--gold);opacity:0.5}
+</style>
+
+<h2 class="sr-only"></h2>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<nav id="nav">
+  <span class="nav-logo" id="navLogo">Akanshya Gogoi</span>
+  <div class="nav-links">
+    <a onclick="goTo('about')">About</a>
+    <a onclick="goTo('work')">Work</a>
+    <a onclick="goTo('recs')">Testimonials</a>
+    <a onclick="goTo('contact')">Contact</a>
+    <div class="nav-dot"></div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow" id="ey">Social media &amp; brand marketing</div>
+      <div class="hero-name" id="hn">AKANSHYA<br><em>GOGOI</em></div>
+    </div>
+    <div class="hero-bottom" id="hb">
+      <p class="hero-desc">Brand and social media marketing professional with 3+ years building digital presence for 50+ clients across entertainment, lifestyle, fitness, and hospitality. I help brands build visibility, engagement, and audience growth.</p>
+      <div class="hero-pills">
+        <span class="hpill">Social media</span>
+        <span class="hpill">Influencer Marketing</span>
+        <span class="hpill">Brand strategy</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-gold" onclick="goTo('work')">View work</button>
+        <button class="btn-ghost">Download CV</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right" id="hr">
+    <div class="portrait-box">
+      <i class="ti ti-user" aria-hidden="true"></i>
+      <span>Your photo</span>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-track"></div>
+      <span class="scroll-txt">Scroll</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat reveal"><div class="stat-n">50<em>+</em></div><div class="stat-l">Clients managed</div></div>
+  <div class="stat reveal d1"><div class="stat-n">3<em>+</em></div><div class="stat-l">Years experience</div></div>
+  <div class="stat reveal d2"><div class="stat-n">100<em>+</em></div><div class="stat-l">Campaigns executed</div></div>
+  <div class="stat reveal d3"><div class="stat-n">3</div><div class="stat-l">Industry verticals</div></div>
+</div>
+
+<section class="sec" id="about">
+  <div class="eyebrow reveal">About me</div>
+  <div class="about-grid">
+    <div class="reveal d1">
+      <h2 class="headline">The person<br>behind the <em>work.</em></h2>
+      <p class="about-body">I'm a brand and social media marketing professional based in India with 3+ years of experience across entertainment, lifestyle, fitness, and hospitality, working with everyone from independent musicians to large-scale music festivals.</p>
+      <p class="about-body">My strength is combining creative thinking with execution discipline and turning ideas into measurable results.</p>
+    </div>
+    <div class="skills reveal d2">
+      <div class="skrow"><span class="skcat">Social media</span><div class="sktags"><span class="sktag">Content strategy</span><span class="sktag">Copywriting</span><span class="sktag">Analytics</span></div></div>
+      <div class="skrow"><span class="skcat">Influencer</span><div class="sktags"><span class="sktag">Creator mgmt</span><span class="sktag">UGC</span><span class="sktag">ROI tracking</span></div></div>
+      <div class="skrow"><span class="skcat">Brand</span><div class="sktags"><span class="sktag">Positioning</span><span class="sktag">Campaigns</span><span class="sktag">Reporting</span></div></div>
+      <div class="skrow"><span class="skcat">Platforms</span><div class="sktags"><span class="sktag">Instagram</span><span class="sktag">LinkedIn</span><span class="sktag">YouTube</span><span class="sktag">Facebook</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="eyebrow reveal">Selected work</div>
+  <h2 class="headline reveal d1">Projects that moved <em>the needle.</em></h2>
+  <div class="work-grid reveal d2">
+    <div class="proj" onclick="openModal('skillbox')">
+      <div class="proj-glow"></div>
+      <div class="proj-head"><span class="proj-num">01 — SKILLBOX</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:12px" aria-hidden="true"></i></div></div>
+      <div class="proj-title">International Artist Tour Campaign</div>
+      <div class="proj-desc">End-to-end digital marketing for a multi-city artist tour across India — announcement to post-show engagement.</div>
+      <div class="proj-mets"><div><div class="pmv">2.1M+</div><div class="pmk">Campaign Reach</div></div><div><div class="pmv">~40%</div><div class="pmk">Ticket Sales</div></div><div><div class="pmv">18</div><div class="pmk">Influencer Collaborations</div></div></div>
+      <div class="proj-tags"><span class="ptag">Influencer</span><span class="ptag">Brand</span><span class="ptag">Live events</span></div>
+      <div class="proj-bar"></div>
+    </div>
+    <div class="proj" onclick="openModal('necmer')">
+      <div class="proj-glow"></div>
+      <div class="proj-head"><span class="proj-num">02 — NECMERCONSULT</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:12px" aria-hidden="true"></i></div></div>
+      <div class="proj-title">NecmerConsult</div>
+      <div class="proj-desc">Managed marketing campaigns and brand communications for businesses across hospitality, healthcare, and fitness sectors, delivering audience growth, engagement, and revenue-focused outcomes through integrated marketing initiatives.</div>
+      <div class="proj-mets"><div><div class="pmv">3.8x</div><div class="pmk">Average Engagement Growth</div></div><div><div class="pmv">5+</div><div class="pmk">Marketing Channels Managed</div></div><div><div class="pmv">Multi</div><div class="pmk">Industry Verticals</div></div></div>
+      <div class="proj-tags"><span class="ptag">Social media</span><span class="ptag">Community</span></div>
+      <div class="proj-bar"></div>
+    </div>
+    <div class="proj" onclick="openModal('deepak')">
+      <div class="proj-glow"></div>
+      <div class="proj-head"><span class="proj-num">03 — PERSONAL BRAND</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:12px" aria-hidden="true"></i></div></div>
+      <div class="proj-title">Personal Brand Scaling & Creator Marketing</div>
+      <div class="proj-desc">Designed and executed a content-led growth strategy for a fitness and entrepreneurship creator.</div>
+      <div class="proj-mets"><div><div class="pmv">63K+</div><div class="pmk">Views (30 Days)</div></div><div><div class="pmv">28.7K</div><div class="pmk">Accounts Reached</div></div><div><div class="pmv">90.8%</div><div class="pmk">Non-Follower Views</div></div></div>
+      <div class="proj-tags"><span class="ptag">Personal brand</span><span class="ptag">Social media</span></div>
+      <div class="proj-bar"></div>
+    </div>
+    <div class="proj" onclick="openModal('festival')">
+      <div class="proj-glow"></div>
+      <div class="proj-head"><span class="proj-num">04 — SKILLBOX</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:12px" aria-hidden="true"></i></div></div>
+      <div class="proj-title">Music Festival & Live Event Campaigns</div>
+      <div class="proj-desc">Creator-led campaign driving attendance and ticket sales for a large-scale music festival.</div>
+      <div class="proj-mets"><div><div class="pmv">500K+</div><div class="pmk">Campaign Reach</div></div><div><div class="pmv">50+</div><div class="pmk">Event Organizers</div></div><div><div class="pmv">30+</div><div class="pmk">Creator Collaborations</div></div></div>
+      <div class="proj-tags"><span class="ptag">Influencer</span><span class="ptag">Brand</span><span class="ptag">Live events</span></div>
+      <div class="proj-bar"></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" id="showcase">
+  <div class="eyebrow reveal">Sample work</div>
+  <h2 class="headline reveal">Campaigns, concerts, creators and <em>crowds.</em></h2>
+  <p class="about-body">A selection of live events, artist tours, festival campaigns, brand activations, creator collaborations and marketing projects supported across India.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px">
+    <img src="CYX01129.jpg" style="width:100%;height:260px;object-fit:cover">
+    <img src="DSC02907.jpg" style="width:100%;height:260px;object-fit:cover">
+    <img src="_GP_2227.jpg" style="width:100%;height:260px;object-fit:cover">
+    <img src="464930260_1121437929314176_1604633673703835461_n.jpg" style="width:100%;height:260px;object-fit:cover">
+    <img src="465681486_1073898227276434_5482356116412065776_n.jpg" style="width:100%;height:260px;object-fit:cover">
+    <img src="468962265_18288080167241737_7768765892529341030_n.jpg" style="width:100%;height:260px;object-fit:cover">
+  </div>
+
+  <div style="margin-top:40px">
+    <h3 style="margin-bottom:20px;color:#C9A84C">Video Campaign Samples</h3>
+    <video controls style="width:32%;margin-right:1%"><source src="Boat.MP4"></video>
+    <video controls style="width:32%;margin-right:1%"><source src="BTS.MOV"></video>
+    <video controls style="width:32%"><source src="corn reel .mp4"></video>
+  </div>
+</section>
+
+<section class="sec" id="recs">
+  <div class="eyebrow reveal">Testimonials</div>
+  <h2 class="headline reveal d1">Words from people <em>who know.</em></h2>
+  <div class="rec-grid reveal d2">
+    <div class="rec"><div class="rec-mark">"</div><p class="rec-text">Akanshya brought strategic clarity and creative energy to our campaigns that genuinely moved the needle. She doesn't just execute — she thinks deeply about impact.</p><div class="rec-div"></div><div class="rec-who"><div class="rec-init">AK</div><div><div class="rec-name">Client Name</div><div class="rec-role">Founder, Company Name</div><div class="rec-email">contact@email.com</div></div></div><div class="rec-bar"></div></div>
+    <div class="rec"><div class="rec-mark">"</div><p class="rec-text">Working with Akanshya on our artist tour was seamless. She managed every detail of the influencer rollout — the results spoke for themselves. Sold-out shows.</p><div class="rec-div"></div><div class="rec-who"><div class="rec-init">BM</div><div><div class="rec-name">Client Name</div><div class="rec-role">Artist Manager, Company Name</div><div class="rec-email">contact@email.com</div></div></div><div class="rec-bar"></div></div>
+    <div class="rec"><div class="rec-mark">"</div><p class="rec-text">Her content strategy transformed our Instagram presence. Within three months engagement tripled and our community actually started talking to us.</p><div class="rec-div"></div><div class="rec-who"><div class="rec-init">CN</div><div><div class="rec-name">Client Name</div><div class="rec-role">Marketing Head, Company Name</div><div class="rec-email">contact@email.com</div></div></div><div class="rec-bar"></div></div>
+    <div class="rec"><div class="rec-mark">"</div><p class="rec-text">Akanshya has a rare ability to understand a brand's voice instantly and translate it into content that resonates. Proactive, reliable, and genuinely talented.</p><div class="rec-div"></div><div class="rec-who"><div class="rec-init">DR</div><div><div class="rec-name">Client Name</div><div class="rec-role">CEO, Company Name</div><div class="rec-email">contact@email.com</div></div></div><div class="rec-bar"></div></div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="eyebrow reveal">Get in touch</div>
+  <div class="contact-grid">
+    <div class="reveal d1">
+      <h2 class="headline">Let's build<br>something <em>great.</em></h2>
+      <p class="contact-sub">Open to full-time roles and select freelance projects across social media, influencer marketing, and brand strategy.</p>
+      <div class="clinks">
+        <a href="https://www.linkedin.com/in/akanshya-gogoi-b851a1194/" target="_blank" class="clink"><div class="clink-bar"></div><i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn — Akanshya Gogoi</a>
+        <a href="mailto:akanshyag1@gmail.com" class="clink"><div class="clink-bar"></div><i class="ti ti-mail" aria-hidden="true"></i>akanshyag1@gmail.com</a>
+        <a href="tel:+919678672327" class="clink"><div class="clink-bar"></div><i class="ti ti-phone" aria-hidden="true"></i>+91 96786 72327</a>
+      </div>
+    </div>
+    <div class="cinfo-stack reveal d2">
+      <div class="cinfo"><div class="cinfo-l">Based in</div><div class="cinfo-v">India</div></div>
+      <div class="cinfo"><div class="cinfo-l">Available for</div><div class="cinfo-v">Full-time · Freelance · Consulting</div></div>
+      <div class="cinfo"><div class="cinfo-l">Specialises in</div><div class="cinfo-v">Social media · Influencer marketing · Brand strategy</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>AKANSHYA GOGOI <span class="fg">·</span> 2026</p>
+  <p>SOCIAL MEDIA <span class="fg">&</span> BRAND MARKETING</p>
+</footer>
+
+<div class="modal-bg" id="modalBg" onclick="closeMod(event)">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=window.innerWidth/2,my=window.innerHeight/2,rx=mx,ry=my;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animRing(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button,.proj,.rec,.stat,.sktag,.hpill,.clink').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px'});
+  el.addEventListener('mouseleave',()=>{ring.style.width='32px';ring.style.height='32px'});
+});
+
+const navEl=document.getElementById('nav'),navLogo=document.getElementById('navLogo'),heroSec=document.querySelector('.hero');
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  navLogo.classList.toggle('show',sy>heroSec.offsetHeight*0.4);
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight*0.9)el.classList.add('in')});
+},{passive:true});
+
+setTimeout(()=>{
+  document.getElementById('ey').style.cssText='opacity:1;transform:translateY(0)';
+  setTimeout(()=>{document.getElementById('hn').style.cssText='opacity:1;transform:translateY(0)';
+    setTimeout(()=>{document.getElementById('hb').style.cssText='opacity:1;transform:translateY(0)';document.getElementById('hr').style.cssText='opacity:1'},300)},200)},500);
+
+document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight*0.9)el.classList.add('in')});
+
+function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
+
+const P={
+  skillbox:{tags:['Influencer','Brand strategy','Live events'],title:'SkillBox — International Artist Tour Campaign',desc:'Led end-to-end digital marketing for a multi-city artist tour across India — from announcement through ticket sales to post-show engagement. Managed influencer partnerships, coordinated with artist management, venues, and sponsors.',metrics:[{val:'2.1M',key:'Campaign reach'},{val:'↑42%',key:'Ticket sales vs target'},{val:'18',key:'Influencers managed'}],bullets:['Conceptualised campaign strategy from announcement to post-event','Identified and managed 18 influencer partnerships end-to-end','Coordinated with ticketing, production, and creative teams','Built platform-specific content for Instagram, YouTube, Facebook','Monitored real-time performance and optimised mid-campaign']},
+  necmer:{tags:['Social media','Community mgmt'],title:'NecmerConsult — Multi-client social media retainer',desc:'Managed monthly content calendars, community management, copywriting, and performance reporting for 50+ clients across hospitality, fitness, lifestyle, and entertainment verticals simultaneously.',metrics:[{val:'50+',key:'Active clients'},{val:'↑3.8x',key:'Avg. engagement growth'},{val:'5',key:'Platforms managed'}],bullets:['Created customised content strategies for each client','Planned and published content calendars across 5 platforms','Collaborated with designers, videographers, and photographers','Delivered monthly performance reports with strategic recommendations','Developed organic growth strategies focused on community retention']},
+  deepak:{tags:['Personal brand','Social media','Influencer'],title:'Deepak — Personal brand & community growth',desc:'Developed the full content strategy, production pipeline, and community-building initiatives for a fitness and entrepreneurship micro-influencer. Managed collaborations, creative direction, and brand positioning.',metrics:[{val:'↑68%',key:'Follower growth'},{val:'4.2%',key:'Avg. engagement rate'},{val:'12',key:'Brand collabs secured'}],bullets:['Built comprehensive content strategy across fitness and entrepreneurship','Planned and supervised content production and repurposing','Managed brand collaborations and influencer partnerships','Implemented engagement initiatives that grew community depth','Tracked performance insights and refined content mix continuously']},
+  festival:{tags:['Influencer','Brand','Live events'],title:'Music festival — Large-scale live event campaign',desc:'Drove audience attendance, ticket sales, and brand awareness for a large-scale music festival through creator-led digital campaigns, fan engagement activations, and cross-platform content strategies.',metrics:[{val:'500K+',key:'Total event reach'},{val:'30+',key:'Creators activated'},{val:'↑55%',key:'Pre-sale target hit'}],bullets:['Planned and executed influencer activation strategy across 30+ creators','Managed contest campaigns, fan challenges, and interactive content','Coordinated with sponsors and partners on co-branded content','Built pre-event buzz through teaser content and artist collabs','Reported on campaign performance and audience sentiment post-event']}
+};
+
+function openModal(id){
+  const p=P[id];
+  document.getElementById('modalBox').innerHTML=`
+    <button class="modal-close" onclick="document.getElementById('modalBg').classList.remove('open')" aria-label="Close"><i class="ti ti-x"></i></button>
+    <div class="modal-ey">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+    <div class="modal-title">${p.title}</div>
+    <div class="modal-desc">${p.desc}</div>
+    <div class="modal-mets">${p.metrics.map(m=>`<div class="mmet"><div class="mmet-v">${m.val}</div><div class="mmet-k">${m.key}</div></div>`).join('')}</div>
+    <div class="modal-sec">What I did</div>
+    <ul class="modal-list">${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+  document.getElementById('modalBg').classList.add('open');
+}
+function closeMod(e){if(e.target===document.getElementById('modalBg'))document.getElementById('modalBg').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('modalBg').classList.remove('open')});
+</script>
