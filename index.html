@@ -136,7 +136,7 @@ nav{position:sticky;top:0;z-index:500;background:rgba(10,10,12,0.72);backdrop-fi
 .skills{display:flex;flex-direction:column;gap:0}
 .skrow{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)}
 .skrow:last-child{border-bottom:1px solid var(--line)}
-.skcat{font-size:14px;font-weight:600;color:#fff;min-width:120px;padding-top:6px}
+.skcat{font-size:14px;font-weight:600;color:#fff;min-width:148px;padding-top:6px}
 .sktags{display:flex;gap:8px;flex-wrap:wrap}
 .sktag{font-size:13px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);transition:all .3s;cursor:none}
 .sktag:hover{border-color:var(--orange);color:#fff;background:rgba(255,90,31,0.1)}
@@ -162,13 +162,13 @@ nav{position:sticky;top:0;z-index:500;background:rgba(10,10,12,0.72);backdrop-fi
 
 /* SHOWCASE */
 .pcarousel{margin-top:34px;position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.ptrack{display:flex;gap:16px;width:max-content;animation:pscroll 55s linear infinite reverse;will-change:transform}
+.ptrack{display:flex;gap:16px;width:max-content;animation:pscroll 95s linear infinite reverse;will-change:transform}
 .pcarousel:hover .ptrack{animation-play-state:paused}
 .pslide{flex:0 0 auto}
 .pslide img{height:320px;width:auto;border-radius:18px;border:1px solid var(--line);display:block}
 @keyframes pscroll{to{transform:translateX(-50%)}}
 .vcarousel{margin-top:44px;position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.vtrack{display:flex;gap:18px;width:max-content;animation:vscroll 60s linear infinite;will-change:transform}
+.vtrack{display:flex;gap:18px;width:max-content;animation:vscroll 70s linear infinite;will-change:transform}
 .vcarousel:hover .vtrack{animation-play-state:paused}
 .vslide{flex:0 0 auto;width:270px;position:relative}
 .vslide video{width:270px;height:480px;object-fit:cover;border-radius:18px;border:1px solid var(--line);background:#000;display:block;cursor:none}
@@ -229,6 +229,7 @@ footer p{font-size:14px;color:var(--muted)}
 .work-grid.in .proj:nth-child(2){animation-delay:.09s}
 .work-grid.in .proj:nth-child(3){animation-delay:.18s}
 .work-grid.in .proj:nth-child(4){animation-delay:.27s}
+.work-grid.in .proj:nth-child(5){animation-delay:.36s}
 .rec-grid.in .rec:nth-child(2){animation-delay:.12s}
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
@@ -276,6 +277,8 @@ footer p{font-size:14px;color:var(--muted)}
   .vslide{width:200px}
   .vslide video{width:200px;height:356px}
   .hero-services{gap:28px}
+  .skrow{flex-direction:column;gap:10px}
+  .skcat{min-width:0;padding-top:0}
   footer{flex-direction:column;align-items:flex-start}
 }
 </style>
@@ -365,10 +368,9 @@ footer p{font-size:14px;color:var(--muted)}
       <p class="about-body">My strength is combining creative thinking with execution discipline and turning ideas into measurable results.</p>
     </div>
     <div class="skills reveal d2">
-      <div class="skrow"><span class="skcat">Social media</span><div class="sktags"><span class="sktag">Content strategy</span><span class="sktag">Copywriting</span><span class="sktag">Analytics</span></div></div>
-      <div class="skrow"><span class="skcat">Influencer</span><div class="sktags"><span class="sktag">Creator mgmt</span><span class="sktag">UGC</span><span class="sktag">ROI tracking</span></div></div>
-      <div class="skrow"><span class="skcat">Brand</span><div class="sktags"><span class="sktag">Positioning</span><span class="sktag">Campaigns</span><span class="sktag">Reporting</span></div></div>
-      <div class="skrow"><span class="skcat">Platforms</span><div class="sktags"><span class="sktag">Instagram</span><span class="sktag">LinkedIn</span><span class="sktag">YouTube</span><span class="sktag">Facebook</span></div></div>
+      <div class="skrow"><span class="skcat">Marketing</span><div class="sktags"><span class="sktag">Influencer marketing</span><span class="sktag">Creator partnerships</span><span class="sktag">Brand partnerships</span><span class="sktag">Campaign strategy</span><span class="sktag">Content strategy</span><span class="sktag">Community management</span><span class="sktag">UGC strategy</span><span class="sktag">Brand storytelling</span><span class="sktag">Event marketing</span><span class="sktag">Paid media</span></div></div>
+      <div class="skrow"><span class="skcat">Analytics &amp; tools</span><div class="sktags"><span class="sktag">Meta Ads Manager</span><span class="sktag">GA4</span><span class="sktag">Instagram Insights</span><span class="sktag">YouTube Studio</span><span class="sktag">KPI tracking</span><span class="sktag">Campaign reporting</span><span class="sktag">Audience segmentation</span><span class="sktag">Canva</span><span class="sktag">CapCut</span></div></div>
+      <div class="skrow"><span class="skcat">Professional</span><div class="sktags"><span class="sktag">Stakeholder management</span><span class="sktag">Cross-functional collaboration</span><span class="sktag">Client relationships</span><span class="sktag">Negotiation</span><span class="sktag">Project management</span></div></div>
     </div>
   </div>
 </section>
@@ -377,9 +379,18 @@ footer p{font-size:14px;color:var(--muted)}
   <div class="eyebrow reveal">Selected work</div>
   <h2 class="headline reveal d1">Projects that moved <em>the needle.</em></h2>
   <div class="work-grid">
+    <div class="proj" onclick="openModal('sunburn')">
+      <div class="proj-glow"></div>
+      <div class="proj-head"><span class="proj-num">01 — SUNBURN UNION</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
+      <div class="proj-title">Influencer Marketing &amp; Brand Partnerships Manager</div>
+      <div class="proj-desc">Contractual role in Bengaluru. Led creator collaborations, paid media, and content across concurrent live entertainment events.</div>
+      <div class="proj-mets"><div><div class="pmv">~24%</div><div class="pmk">Tickets from organic stories</div></div><div><div class="pmv">14–20%</div><div class="pmk">Organic story conversion</div></div><div><div class="pmv">1–2%</div><div class="pmk">Paid ad conversion</div></div></div>
+      <div class="proj-tags"><span class="ptag">Influencer</span><span class="ptag">Paid media</span><span class="ptag">Live events</span></div>
+      <div class="proj-bar"></div>
+    </div>
     <div class="proj" onclick="openModal('skillbox')">
       <div class="proj-glow"></div>
-      <div class="proj-head"><span class="proj-num">01 — SKILLBOX</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
+      <div class="proj-head"><span class="proj-num">02 — SKILLBOX</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
       <div class="proj-title">International Artist Tour Campaign</div>
       <div class="proj-desc">End-to-end digital marketing for a multi-city artist tour across India — announcement to post-show engagement.</div>
       <div class="proj-mets"><div><div class="pmv">2.1M+</div><div class="pmk">Campaign Reach</div></div><div><div class="pmv">~40%</div><div class="pmk">Ticket Sales</div></div><div><div class="pmv">18</div><div class="pmk">Influencer Collaborations</div></div></div>
@@ -388,7 +399,7 @@ footer p{font-size:14px;color:var(--muted)}
     </div>
     <div class="proj" onclick="openModal('necmer')">
       <div class="proj-glow"></div>
-      <div class="proj-head"><span class="proj-num">02 — NECMERCONSULT</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
+      <div class="proj-head"><span class="proj-num">03 — NECMERCONSULT</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
       <div class="proj-title">NecmerConsult</div>
       <div class="proj-desc">Managed marketing campaigns and brand communications for businesses across hospitality, healthcare, and fitness sectors, delivering audience growth, engagement, and revenue-focused outcomes through integrated marketing initiatives.</div>
       <div class="proj-mets"><div><div class="pmv">3.8x</div><div class="pmk">Average Engagement Growth</div></div><div><div class="pmv">5+</div><div class="pmk">Marketing Channels Managed</div></div><div><div class="pmv">Multi</div><div class="pmk">Industry Verticals</div></div></div>
@@ -397,7 +408,7 @@ footer p{font-size:14px;color:var(--muted)}
     </div>
     <div class="proj" onclick="openModal('deepak')">
       <div class="proj-glow"></div>
-      <div class="proj-head"><span class="proj-num">03 — PERSONAL BRAND</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
+      <div class="proj-head"><span class="proj-num">04 — PERSONAL BRAND</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
       <div class="proj-title">Personal Brand Scaling & Creator Marketing</div>
       <div class="proj-desc">Designed and executed a content-led growth strategy for a fitness and entrepreneurship creator.</div>
       <div class="proj-mets"><div><div class="pmv">63K+</div><div class="pmk">Views (30 Days)</div></div><div><div class="pmv">28.7K</div><div class="pmk">Accounts Reached</div></div><div><div class="pmv">90.8%</div><div class="pmk">Non-Follower Views</div></div></div>
@@ -406,7 +417,7 @@ footer p{font-size:14px;color:var(--muted)}
     </div>
     <div class="proj" onclick="openModal('festival')">
       <div class="proj-glow"></div>
-      <div class="proj-head"><span class="proj-num">04 — SKILLBOX</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
+      <div class="proj-head"><span class="proj-num">05 — SKILLBOX</span><div class="proj-arrow"><i class="ti ti-arrow-up-right" style="font-size:15px" aria-hidden="true"></i></div></div>
       <div class="proj-title">Music Festival & Live Event Campaigns</div>
       <div class="proj-desc">Creator-led campaign driving attendance and ticket sales for a large-scale music festival.</div>
       <div class="proj-mets"><div><div class="pmv">500K+</div><div class="pmk">Campaign Reach</div></div><div><div class="pmv">50+</div><div class="pmk">Event Organizers</div></div><div><div class="pmv">30+</div><div class="pmk">Creator Collaborations</div></div></div>
@@ -423,6 +434,14 @@ footer p{font-size:14px;color:var(--muted)}
 
   <div class="pcarousel reveal d2">
     <div class="ptrack" id="ptrack">
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4206.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4207.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4208.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4209.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4210.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4211.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4212.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
+      <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4214.JPG.jpeg" alt="Campaign work" loading="lazy"></div>
       <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/New/464930260_1121437929314176_1604633673703835461_n.jpg" alt="Campaign work" loading="lazy"></div>
       <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/New/465681486_1073898227276434_5482356116412065776_n.jpg" alt="Campaign work" loading="lazy"></div>
       <div class="pslide"><img src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/New/465817862_3967934036862784_3095913255930512544_n.jpg" alt="Campaign work" loading="lazy"></div>
@@ -439,6 +458,7 @@ footer p{font-size:14px;color:var(--muted)}
   <div class="reveal d2">
     <div class="vcarousel">
       <div class="vtrack" id="vtrack">
+        <div class="vslide"><video muted loop playsinline preload="metadata"><source src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/IMG_4213.MP4"></video><span class="vmute"><i class="ti ti-volume-3" aria-hidden="true"></i></span></div>
         <div class="vslide"><video muted loop playsinline preload="metadata"><source src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/New/Schweppes.MP4"></video><span class="vmute"><i class="ti ti-volume-3" aria-hidden="true"></i></span></div>
         <div class="vslide"><video muted loop playsinline preload="metadata"><source src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/New/Knorr.mp4"></video><span class="vmute"><i class="ti ti-volume-3" aria-hidden="true"></i></span></div>
         <div class="vslide"><video muted loop playsinline preload="metadata"><source src="https://pub-5495fe4d213d436898163a04e139f109.r2.dev/New/Live%20the%20American%20Pride.mp4"></video><span class="vmute"><i class="ti ti-volume-3" aria-hidden="true"></i></span></div>
@@ -561,6 +581,7 @@ if(vtrack){
 }
 
 const P={
+  sunburn:{tags:['Influencer','Paid media','Live events'],title:'Sunburn Union — Influencer Marketing & Brand Partnerships Manager',desc:'Contractual role in Bengaluru. Led influencer and creator collaborations, paid media, and content for live entertainment events, with partnerships and creative timed to each on-sale and show date.',metrics:[{val:'~24%',key:'Tickets from organic stories'},{val:'14–20%',key:'Organic story conversion'},{val:'1–2%',key:'Paid ad conversion'}],bullets:['Led influencer and creator collaborations for live events, pairing nightlife and music creators with paid partnerships timed to each on-sale and show date','Owned the paid media plan across concurrent events: Meta conversion and retargeting ads (lookalike and past-attendee audiences) plus Spotify audio ads','Built the content calendar for recurring IPs and artist-led shows — Baddies Take Thursdays Off, BoxOffice Fridays, and LaaLaaLand — running reels, stories, and countdowns at once','Tracked ticket sales by source and creative on the F1 campaign: organic stories converted at 14–20% versus 1–2% for paid ads, driving ~24% of tickets at zero ad cost and lowering blended acquisition cost']},
   skillbox:{tags:['Influencer','Brand','Live events'],title:'SkillBox — International Artist Tour Campaign',desc:'End-to-end digital marketing for a multi-city artist tour across India — from announcement through ticket sales to post-show engagement. Managed influencer partnerships, coordinated with artist management, venues, and sponsors.',metrics:[{val:'2.1M+',key:'Campaign Reach'},{val:'~40%',key:'Ticket Sales'},{val:'18',key:'Influencer Collaborations'}],bullets:['Conceptualised campaign strategy from announcement to post-event','Identified and managed 18 influencer partnerships end-to-end','Coordinated with ticketing, production, and creative teams','Built platform-specific content for Instagram, YouTube, Facebook','Monitored real-time performance and optimised mid-campaign']},
   necmer:{tags:['Social media','Community'],title:'NecmerConsult',desc:'Managed marketing campaigns and brand communications for businesses across hospitality, healthcare, and fitness sectors, delivering audience growth, engagement, and revenue-focused outcomes through integrated marketing initiatives.',metrics:[{val:'3.8x',key:'Average Engagement Growth'},{val:'5+',key:'Marketing Channels Managed'},{val:'Multi',key:'Industry Verticals'}],bullets:['Created customised content strategies for each client','Planned and published content calendars across multiple channels','Collaborated with designers, videographers, and photographers','Delivered performance reports with strategic recommendations','Developed organic growth strategies focused on community retention']},
   deepak:{tags:['Personal brand','Social media'],title:'Personal Brand Scaling & Creator Marketing',desc:'Designed and executed a content-led growth strategy for a fitness and entrepreneurship creator — building visibility, reach, and engagement through a consistent content pipeline and creative direction.',metrics:[{val:'63K+',key:'Views (30 Days)'},{val:'28.7K',key:'Accounts Reached'},{val:'90.8%',key:'Non-Follower Views'}],bullets:['Built comprehensive content strategy across fitness and entrepreneurship','Planned and supervised content production and repurposing','Managed brand collaborations and influencer partnerships','Implemented engagement initiatives that grew community depth','Tracked performance insights and refined content mix continuously']},
